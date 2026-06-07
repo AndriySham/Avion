@@ -1,0 +1,68 @@
+/* Імпортуємо красивий сучасний шрифт Outfit з Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Фірмова колірна палітра Avion */
+  --dark-primary: #2A254B;
+  /* Глибокий синій/індиго */
+  --primary: #2A254B;
+  --light-gray: #F9F9F9;
+  /* Світло-сірий фон для блоків */
+  --border-gray: #EBE8F4;
+  /* Колір рамок та розділювачів */
+  --border-dark: #DCDCDC;
+  --text-dark: #2A254B;
+  /* Основний темний колір тексту */
+  --text-muted: #726E8D;
+  /* Мuted текст (описи, другорядні деталі) */
+  --white: #FFFFFF;
+  --accent-teal: #4E5E5A;
+  /* Допоміжний темно-зелений/бірюзовий колір */
+
+  /* Шрифти */
+  --font-family: 'Outfit', sans-serif;
+
+  /* Анімації */
+  --transition: all 0.3s ease;
+}
+
+/* Базове скидання стилів (Reset) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--white);
+  color: var(--text-dark);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
