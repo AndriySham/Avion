@@ -5,6 +5,7 @@ import { getProducts } from "../services/api";
 export interface ProductsContextType {
     products: Product[] | null;
     isLoading: boolean;
+    error: string | null;
 }
 
 const ProductsContext = createContext<ProductsContextType | undefined>(undefined);
@@ -33,7 +34,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
     }, []);
 
     return (
-        <ProductsContext value={{ products, isLoading }}>
+        <ProductsContext value={{ products, isLoading, error }}>
             {children}
         </ProductsContext>
     );

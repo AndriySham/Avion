@@ -1,6 +1,11 @@
 import "./ProductCard.css";
+import type { Product } from "../../types";
 
-export function ProductCard(product) {
+interface ProductCardProps {
+    product: Product;
+}
+
+export function ProductCard({ product }: ProductCardProps) {
     return (
         <div className='product-card'>
             <div className="product-card__image">
