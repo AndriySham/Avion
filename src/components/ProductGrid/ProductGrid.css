@@ -1,0 +1,16 @@
+.products__loading,
+.products__error {
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.products__error {
+    color: red;
+}
+
+.products__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 20px;
+}
