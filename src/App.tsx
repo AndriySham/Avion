@@ -1,12 +1,21 @@
-import { ProductGrid } from "./components/ProductGrid/ProductGrid"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { ProductGrid } from "./components/ProductGrid/ProductGrid";
+import { ProductDetail } from "./pages/ProductDetail";
 
 function App() {
   return (
-    <div style={{ padding: '40px', textAlign: 'center', fontFamily: 'sans-serif' }}>
-      <h1 style={{ color: '#2A254B' }}>Avion Furniture Store</h1>
+    <BrowserRouter>
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 
-      <ProductGrid />
-    </div>
+        <main style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/" element={<ProductGrid />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
