@@ -1,0 +1,126 @@
+.product-detail {
+    margin-top: 20px;
+}
+
+.product-detail__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-detail__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-detail__image img {
+    display: block;
+}
+
+.product-detail__title {
+    margin-top: 28px;
+    font-size: 24px;
+    line-height: 1.4;
+}
+
+.product-detail__price {
+    margin-top: 12px;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.line {
+    border-bottom: 1px solid var(--border-gray);
+    padding-bottom: 16px;
+}
+
+.product-detail__subtitle {
+    margin-top: 28px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.product-detail__description {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.product-detail__dimension {
+    margin-top: 28px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.product-detail__dimensions {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product-detail__dimentions-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-detail__dimentions-item__label {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.product-detail__dimentions-item__value {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.product-detail__quantity {
+    margin-top: 28px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.product-detail__counter {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 46px 1fr 46px;
+}
+
+.product-detail__quantity__input {
+    text-align: center;
+    height: 46px;
+    border: none;
+    width: 100%;
+}
+
+.product-detail__quantity__minus,
+.product-detail__quantity__plus {
+    height: 46px;
+    font-size: 16px;
+    color: var(--border-gray);
+    background-color: var(--white);
+    border: none;
+}
+
+.product-detail__button-wrapper {
+    margin: 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.product-detail__button-save {
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: var(--white);
+    padding: 16px 0;
+}
+
+.product-detail__button-add {
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: var(--text-dark);
+    color: var(--white);
+    padding: 16px 0;
+}

@@ -37,7 +37,7 @@
 
 body {
   font-family: var(--font-family);
-  background-color: var(--white);
+  background-color: var(--light-gray);
   color: var(--text-dark);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -65,4 +65,8 @@ img {
 ul,
 ol {
   list-style: none;
+}
+
+.container {
+  margin: auto 24px;
 }
