@@ -9,7 +9,7 @@ import "./ProductDetail.css";
 export function ProductDetail() {
     const { id } = useParams<{ id: string }>();
     const [product, setProduct] = useState<Product | null>(null);
-    const [productQuantity, setProductQuantity] = useState<number>(0);
+    const [productQuantity, setProductQuantity] = useState<number>(1);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -48,15 +48,18 @@ export function ProductDetail() {
     }
 
     const quantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setProductQuantity(Number(event.target.value));
+        const val = parseInt(event.target.value, 10);
+        if (!isNaN(val) && val >= 1) {
+            setProductQuantity(val);
+        }
     }
 
     const quantityDecrement = () => {
-        setProductQuantity(productQuantity - 1);
+        setProductQuantity(prev => Math.max(1, prev - 1));
     }
 
-    const quantityIncrement = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setProductQuantity(productQuantity + 1);
+    const quantityIncrement = () => {
+        setProductQuantity(prev => prev + 1);
     }
 
     return (
@@ -88,9 +91,24 @@ export function ProductDetail() {
                         </div>
                         <p className="product-detail__quantity">Quantity</p>
                         <div className="product-detail__counter">
-                            <input className="product-detail__quantity__minus" type="button" value="-" onChange={quantityDecrement} />
-                            <input className="product-detail__quantity__input" type="number" value={productQuantity} onChange={quantityChange}></input>
-                            <input className="product-detail__quantity__plus" type="button" value="+" onChange={quantityIncrement} />
+                            <input
+                                className="product-detail__quantity__minus"
+                                type="button"
+                                value="-"
+                                onClick={quantityDecrement}
+                            />
+                            <input
+                                className="product-detail__quantity__input"
+                                type="number"
+                                value={productQuantity}
+                                onChange={quantityChange}
+                            />
+                            <input
+                                className="product-detail__quantity__plus"
+                                type="button"
+                                value="+"
+                                onClick={quantityIncrement}
+                            />
                         </div>
                         <div className="product-detail__button-wrapper">
                             <button className="product-detail__button-save">Save to favorites</button>
