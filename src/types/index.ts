@@ -1,3 +1,8 @@
+export interface CartItem {
+    product: Product;
+    quantity: number;
+}
+
 export interface ProductDimensions {
     width: number;
     height: number;

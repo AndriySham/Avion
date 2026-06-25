@@ -67,7 +67,7 @@ export function ProductDetail() {
             <div className="container">
                 <div className="product-detail__content">
                     <div className="product-detail__image">
-                        <img src={product.thumbnail} />
+                        <img src={product.thumbnail} alt={product.title} />
                     </div>
                     <div className="product-detail__info">
                         <h2 className="product-detail__title">{product.title}</h2>
