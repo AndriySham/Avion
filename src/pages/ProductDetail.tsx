@@ -3,11 +3,14 @@ import { useParams } from "react-router-dom";
 
 import { getProductById } from "../services/api";
 import type { Product } from "../types";
+import { useCart } from "../context/CartContext";
 
 import "./ProductDetail.css";
 
 export function ProductDetail() {
     const { id } = useParams<{ id: string }>();
+    const { addToCart } = useCart();
+
     const [product, setProduct] = useState<Product | null>(null);
     const [productQuantity, setProductQuantity] = useState<number>(1);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -112,7 +115,7 @@ export function ProductDetail() {
                         </div>
                         <div className="product-detail__button-wrapper">
                             <button className="product-detail__button-save">Save to favorites</button>
-                            <button className="product-detail__button-add">Add to cart</button>
+                            <button className="product-detail__button-add" onClick={() => addToCart(product, productQuantity)}>Add to cart</button>
                         </div>
                     </div>
                 </div>
