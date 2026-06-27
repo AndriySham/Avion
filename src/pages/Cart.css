@@ -24,7 +24,6 @@
 .cart-item__title {
     font-size: 16px;
     line-height: 1.4;
-    /* font:  */
 }
 
 .cart-item__title-row {
@@ -122,6 +121,7 @@
 .cart__total-value {
     font-size: 24px;
     line-height: 1.4;
+    font-family: var(--font-headings);
 }
 
 .cart__info {

@@ -20,7 +20,8 @@
   /* Допоміжний темно-зелений/бірюзовий колір */
 
   /* Шрифти */
-  --font-family: 'Outfit', sans-serif;
+  --font-headings: 'Clash Display', sans-serif;
+  --font-body: 'Satoshi', sans-serif;
 
   /* Анімації */
   --transition: all 0.3s ease;
@@ -36,11 +37,21 @@
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-body);
   background-color: var(--light-gray);
   color: var(--text-dark);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headings);
+  font-weight: 400;
 }
 
 a {

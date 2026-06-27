@@ -9,6 +9,7 @@ export function Cart() {
     const subTotal = cartItems.reduce(
         (sum, item) => sum + item.product.price * item.quantity, 0
     );
+    const formattedSubTotal = subTotal.toFixed(2);
 
     return (
         <div className="cart">
@@ -25,7 +26,7 @@ export function Cart() {
                             <div className="cart-item__details">
                                 <div className="cart-item__info">
                                     <div className="cart-item__title-row">
-                                        <div className="cart-item__title">{item.product.title}</div>
+                                        <h3 className="cart-item__title">{item.product.title}</h3>
                                         <button
                                             className="cart-item__remove-btn"
                                             onClick={() => removeFromCart(item.product.id)}
@@ -61,8 +62,8 @@ export function Cart() {
                     ))}
                 </div>
                 <div className="cart__total-wrapper">
-                    <h3 className="cart__total-lable">Subtotal</h3>
-                    <div className="cart__total-value">&#163; {subTotal}</div>
+                    <h4 className="cart__total-lable">Subtotal</h4>
+                    <div className="cart__total-value">&#163; {formattedSubTotal}</div>
                 </div>
                 <p className="cart__info">Taxes and shipping are calculated at checkout</p>
                 <button className="cart__button">Go to checkout</button>

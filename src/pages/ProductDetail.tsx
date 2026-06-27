@@ -75,9 +75,9 @@ export function ProductDetail() {
                     <div className="product-detail__info">
                         <h2 className="product-detail__title">{product.title}</h2>
                         <p className="product-detail__price">&#163; {product.price}</p>
-                        <p className="product-detail__subtitle line">Product description</p>
+                        <h3 className="product-detail__subtitle line">Product description</h3>
                         <p className="product-detail__description">{product.description}</p>
-                        <p className="product-detail__subtitle line">Dimensions</p>
+                        <h3 className="product-detail__subtitle line">Dimensions</h3>
                         <div className="product-detail__dimensions">
                             <div className="product-detail__dimentions-item">
                                 <span className="product-detail__dimentions-item__label">height</span>
