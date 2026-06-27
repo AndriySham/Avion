@@ -19,6 +19,10 @@
   --accent-teal: #4E5E5A;
   /* Допоміжний темно-зелений/бірюзовий колір */
 
+  /* Logo*/
+  --logo-icon: #22202E;
+
+
   /* Шрифти */
   --font-headings: 'Clash Display', sans-serif;
   --font-body: 'Satoshi', sans-serif;

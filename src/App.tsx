@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { Header } from "./components/Header/Header";
 import { ProductGrid } from "./components/ProductGrid/ProductGrid";
 import { ProductDetail } from "./pages/ProductDetail";
 import { Cart } from "./pages/Cart";
@@ -9,6 +10,7 @@ function App() {
     <BrowserRouter>
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 
+        <Header />
         <main style={{ flex: 1 }}>
           <Routes>
             <Route path="/" element={<ProductGrid />} />
