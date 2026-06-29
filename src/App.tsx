@@ -4,6 +4,7 @@ import { Header } from "./components/Header/Header";
 import { ProductGrid } from "./components/ProductGrid/ProductGrid";
 import { ProductDetail } from "./pages/ProductDetail";
 import { Cart } from "./pages/Cart";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </BrowserRouter>
   )
