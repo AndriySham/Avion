@@ -20,22 +20,22 @@ export function Header() {
                         <span>Avion</span>
                     </Link>
                     <div className="header__actions">
-                        <button className="header__action-search">
+                        <button className="header__action">
                             <Search size={18} />
                         </button>
 
-                        <button className="header__action-cart">
+                        <button className="header__action header__action--cart">
                             <ShoppingCart size={18} />
                             {productQuantity > 0 && (
                                 <span className="header__action-cart-count">{productQuantity}</span>
                             )}
                         </button>
 
-                        <button className="header__action-user">
+                        <button className="header__action">
                             <CircleUser size={18} />
                         </button>
 
-                        <button className="header__action-burger-menu">
+                        <button className="header__action header__action--burger">
                             <Menu size={18} />
                         </button>
                     </div>

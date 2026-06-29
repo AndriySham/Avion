@@ -12,6 +12,7 @@
 
 .header__logo {
     font-size: 24px;
+    font-family: var(--font-headers);
 }
 
 .header__items {
@@ -27,14 +28,19 @@
     align-items: center;
 }
 
-.header__actions button {
+.header__action {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
+    color: inherit;
+    padding: 6px;
 }
 
-.header__action-cart {
+.header__action:hover {
+    color: var(--text-muted);
+}
+
+.header__action--cart {
     position: relative;
 }
 
