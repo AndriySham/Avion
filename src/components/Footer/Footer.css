@@ -61,7 +61,7 @@
 }
 
 .newsletter-form__input::placeholder {
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--btn-blue);
 }
 
 .newsletter-form__button {
