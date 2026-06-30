@@ -48,7 +48,7 @@
 .advantages__grid {
     margin-top: 36px;
     display: grid;
-    grid-template-columns: 4;
+    grid-template-columns: 1fr;
     row-gap: 36px;
 }
 

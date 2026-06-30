@@ -2,10 +2,10 @@ import type { Product, User } from "../types";
 
 const BASE_URL = 'https://dummyjson.com';
 
-export async function getProducts(): Promise<Product[] | null> {
+export async function getProductsByCategoryId(category: string): Promise<Product[] | null> {
     try {
 
-        const response = await fetch(`${BASE_URL}/products/category/furniture`);
+        const response = await fetch(`${BASE_URL}/products/category/${category}`);
 
         if (!response.ok) {
             throw new Error('Error of products laoding');
