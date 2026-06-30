@@ -1,3 +1,5 @@
+/*hero section*/
+
 .hero {
     background-color: var(--dark-primary);
     padding: 40px 0 24px;
@@ -19,9 +21,30 @@
 }
 
 .btn {
-    margin-top: 32px;
     height: 56px;
+    font-size: 16px;
+    background-color: var(--light-gray);
+    color: var(--dark-primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.hero__btn {
+    margin-top: 32px;
     width: 100%;
+}
+
+@media (hover: hover) {
+    .btn:hover {
+        background-color: var(--text-muted);
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .btn--blue {
@@ -35,6 +58,7 @@
 
 
 
+/*advantages section*/
 
 .advantages {
     padding: 48px 0 45px;
@@ -62,4 +86,30 @@
     margin-top: 12px;
     font-size: 14px;
     line-height: 1.5;
+}
+
+
+
+/*home-decoration section*/
+
+.home-decoration {
+    padding: 48px 0 38px;
+    background-color: var(--light-gray);
+}
+
+.home-decoration__title {
+    font-size: 20px;
+}
+
+.home-decoration__list {
+    margin: 19px 0 29px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 16px;
+    column-gap: 20px;
+}
+
+.home-decoration__btn {
+    margin-top: 29px;
+    width: 100%;
 }

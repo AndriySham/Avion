@@ -1,17 +1,48 @@
 import { Van, Check, CreditCard, Sprout } from "lucide-react";
 
+import { useState, useEffect } from "react";
+
+import { getProductsByCategory } from "../services/api";
+import { useProducts } from "../context/ProductContext";
+import { ProductGrid } from "../components/ProductGrid/ProductGrid";
+import { ProductCard } from "../components/ProductCard/ProductCard";
+import type { Product } from "../types";
+
 import "./Home.css";
 
 export function Home() {
+    const [ceramic, setCeramics] = useState<Product[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const loadHomeDecoration = async () => {
+            const result = await getProductsByCategory('home-decoration');
+
+            if (result === null) {
+                setIsLoading(false);
+                setError("Failed to load ceramics");
+                return;
+            }
+
+            const foreProduct = result.slice(0, 4);
+
+            setIsLoading(false);
+            setCeramics(foreProduct);
+        };
+
+        loadHomeDecoration();
+    }, []);
+
     return (
         <>
             <section className="hero">
                 <div className="container">
                     <div className="hero__content">
                         <div className="hero__column">
-                            <h1 className="hero__title">The furniture brand for the future, which timeless designs</h1>
-                            <div className="hero__text">A new era in eco friendly furniture with Avelon, the French luxury retail brand with nice fonts, tasteful colors and a befutiful way to display things digitally using modern new technologies.</div>
-                            <button className="btn btn--blue">View collection</button>
+                            <h1 className="hero__title">The furniture brand for the future, whith timeless designs</h1>
+                            <div className="hero__text">A new era in eco friendly furniture with Avion, the French luxury retail brand with nice fonts, tasteful colors and a beautiful way to display things digitally using modern new technologies.</div>
+                            <button className="btn btn--blue hero__btn">View collection</button>
                         </div>
                         <div className="hero__image">
                             <img src="#" alt="furniture" />
@@ -56,6 +87,27 @@ export function Home() {
                             <p className="advantages__item-text">We use 100% recycled packaging to ensure our footprint is manageable</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section className="home-decoration">
+                <div className="container">
+                    <h2 className="home-decoration__title">Home decoration</h2>
+
+                    {isLoading ? (
+                        <div>Loading...</div>
+                    ) : error ? (
+                        <div className="home-decoration__error">{error}</div>
+                    ) : (
+                        <div className="home-decoration__list">
+                            {ceramic.map((item) => (
+                                <ProductCard key={item.id} product={item} />
+                            ))}
+                        </div>
+                    )}
+
+                    <button className="btn home-decoration__btn">View collection</button>
+
                 </div>
             </section>
         </>
