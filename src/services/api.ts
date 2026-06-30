@@ -2,21 +2,24 @@ import type { Product, User } from "../types";
 
 const BASE_URL = 'https://dummyjson.com';
 
-export async function getProductsByCategoryId(category: string): Promise<Product[] | null> {
-    try {
+export async function getProducts(): Promise<Product[] | null> {
 
-        const response = await fetch(`${BASE_URL}/products/category/${category}`);
+    return getProductsByCategory('furniture');
+}
+
+export async function getProductsByCategory(category: string): Promise<Product[] | null> {
+    try {
+        const response = await fetch(`{$BASE_URL}/products/category/${category}`);
 
         if (!response.ok) {
-            throw new Error('Error of products laoding');
+            throw new Error('Error of products loading');
         }
 
         const data = await response.json();
 
         return data.products;
-
     } catch (error) {
-        console.error('getProducts Error:', error);
+        console.error(`getProductByCategory (${category}) Error:`, error);
 
         return null;
     }
