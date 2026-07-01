@@ -41,39 +41,8 @@
     color: var(--primary-light);
 }
 
-
-
-.newsletter-form {
-    display: flex;
-    flex-direction: row;
-    height: 56px;
-    font-size: 16px;
+.footer__newsletter {
     margin-top: 16px;
-}
-
-.newsletter-form__input {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: var(--white);
-    text-align: center;
-    flex: 1;
-    border: none;
-    padding: 0 16px;
-}
-
-.newsletter-form__input::placeholder {
-    color: var(--btn-blue);
-}
-
-.newsletter-form__button {
-    background-color: var(--white);
-    color: var(--dark-primary);
-    width: 118px;
-    font-weight: 500;
-}
-
-.newsletter-form__button:hover {
-    background-color: var(--primary-light);
-    color: var(--white);
 }
 
 .footer__copyright {

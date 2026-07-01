@@ -42,7 +42,7 @@ export function Footer() {
 
                     <div className="footer__item footer__item--newsletter">
                         <h3 className="footer__item-title">Join our mailing list</h3>
-                        <div className="newsletter-form">
+                        <div className="footer__newsletter newsletter-form newsletter-form--dark">
                             <input type="email" placeholder="your@email.com" className="newsletter-form__input" />
                             <button className="newsletter-form__button">Sign up</button>
                         </div>

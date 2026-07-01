@@ -157,3 +157,42 @@
     margin-top: 32px;
     width: 100%;
 }
+
+
+
+/* benefits section */
+
+.benefits {
+    padding: 48px 0 38px;
+    background-color: var(--light-gray);
+}
+
+.benefits__title {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.benefits__text {
+    margin: 16px 0 64px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* .newsletter-form {
+    display: flex;
+    height: 56px;
+}
+
+.newsletter-form__input {
+    background-color: var(--white);
+    flex: 1;
+    border: none;
+    padding: 0 16px;
+}
+
+.newsletter-form__button {
+    background-color: var(--dark-primary);
+    color: var(--white);
+    width: 118px;
+    font-weight: 500;
+} */
