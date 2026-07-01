@@ -1,10 +1,11 @@
-import { Van, Check, CreditCard, Sprout } from "lucide-react";
-
 import { useState, useEffect } from "react";
+
+import { Van, Check, CreditCard, Sprout } from "lucide-react";
 
 import { getProductsByCategory } from "../services/api";
 import { useProducts } from "../context/ProductContext";
 import { ProductCard } from "../components/ProductCard/ProductCard";
+
 import type { Product } from "../types";
 
 import storyImage from "../assets/storyImage.png";
@@ -12,14 +13,14 @@ import storyImage from "../assets/storyImage.png";
 import "./Home.css";
 
 export function Home() {
-    const [ceramic, setCeramics] = useState<Product[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-
     const {
         products, isLoading: isProductsLoading,
         error: productsError
     } = useProducts();
+
+    const [ceramic, setCeramics] = useState<Product[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const loadHomeDecoration = async () => {
