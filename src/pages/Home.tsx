@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 import { getProductsByCategory } from "../services/api";
 import { useProducts } from "../context/ProductContext";
-import { ProductGrid } from "../components/ProductGrid/ProductGrid";
 import { ProductCard } from "../components/ProductCard/ProductCard";
 import type { Product } from "../types";
 
@@ -14,6 +13,11 @@ export function Home() {
     const [ceramic, setCeramics] = useState<Product[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+
+    const {
+        products, isLoading: isProductsLoading,
+        error: productsError
+    } = useProducts();
 
     useEffect(() => {
         const loadHomeDecoration = async () => {
@@ -40,7 +44,7 @@ export function Home() {
                 <div className="container">
                     <div className="hero__content">
                         <div className="hero__column">
-                            <h1 className="hero__title">The furniture brand for the future, whith timeless designs</h1>
+                            <h1 className="hero__title">The furniture brand for the future, with timeless designs</h1>
                             <div className="hero__text">A new era in eco friendly furniture with Avion, the French luxury retail brand with nice fonts, tasteful colors and a beautiful way to display things digitally using modern new technologies.</div>
                             <button className="btn btn--blue hero__btn">View collection</button>
                         </div>
@@ -97,7 +101,7 @@ export function Home() {
                     {isLoading ? (
                         <div>Loading...</div>
                     ) : error ? (
-                        <div className="home-decoration__error">{error}</div>
+                        <div className="error">{error}</div>
                     ) : (
                         <div className="home-decoration__list">
                             {ceramic.map((item) => (
@@ -109,6 +113,30 @@ export function Home() {
                     <button className="btn home-decoration__btn">View collection</button>
 
                 </div>
+            </section>
+
+            <section className="popular-products">
+                <div className="container">
+                    <h2 className="popular-products__title">Our popular products</h2>
+                </div>
+
+                {isProductsLoading ? (
+                    <div>Loading...</div>
+                ) : productsError ? (
+                    <div className="error">{productsError}</div>
+                ) : (
+                    <div className="popular-products__slider">
+                        {products?.slice(0, 4).map((product) => (
+                            <div key={product.id} className="popular-product__item">
+                                <ProductCard product={product} />
+                            </div>
+                        ))}
+                    </div>
+                )}
+                <div className="container">
+                    <button className="btn popular-prodcts__btn">View all products</button>
+                </div>
+
             </section>
         </>
     )
