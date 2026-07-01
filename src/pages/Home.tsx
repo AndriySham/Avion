@@ -7,6 +7,8 @@ import { useProducts } from "../context/ProductContext";
 import { ProductCard } from "../components/ProductCard/ProductCard";
 import type { Product } from "../types";
 
+import storyImage from "../assets/storyImage.png";
+
 import "./Home.css";
 
 export function Home() {
@@ -146,6 +148,22 @@ export function Home() {
                     <div className="newsletter-form newsletter-form--light">
                         <input type="email" placeholder="your@email.com" className="newsletter-form__input" />
                         <button className=" btn newsletter-form__button">Sign up</button>
+                    </div>
+                </div>
+            </section>
+
+            <section className="global-brand">
+                <div className="global-brand__row">
+                    <div className="global-brand__content">
+                        <h2 className="global-brand__title">From a studio in London to a global brand with <br /> over 400 outlets</h2>
+                        <div className="global-brand__advantages">
+                            <p className="global-brand__text">When we started Avion, the idea was simple. Make high quality furniture affordable and available for the mass market.</p>
+                            <p className="global-brand__text">Handmade, and lovingly crafted furniture and homeware is what we live, breathe and design so our Chelsea boutique become the hotbed for the London interior design community.</p>
+                        </div>
+                        <button className="btn global-brand__btn">Get in touch</button>
+                    </div>
+                    <div className="global-brand__image">
+                        <img src={storyImage} alt="global brand" />
                     </div>
                 </div>
             </section>
