@@ -22,7 +22,7 @@
   --accent-teal: #4E5E5A;
   /* Допоміжний темно-зелений/бірюзовий колір */
 
-  --btn-blue: rgba(255, 255, 255, 0.65);
+  --btn-light-blue: rgba(255, 255, 255, 0.65);
 
   /* Logo*/
   --logo-icon: #22202E;
@@ -166,4 +166,42 @@ ol {
 .newsletter-form__input:focus {
   border-color: var(--primary-light);
   box-shadow: 0 0 0 1px var(--primary-light);
+}
+
+.btn {
+  height: 56px;
+  font-size: 16px;
+  background-color: var(--light-gray);
+  color: var(--dark-primary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.btn-light-blue {
+  background-color: var(--btn-light-blue);
+  color: var(--white);
+}
+
+.btn-dark-blue {
+  background-color: var(--text-dark);
+  color: var(--white);
+}
+
+.btn-white {
+  background-color: var(--white);
+  color: var(--dark-primary);
+  border: 1px solid var(--border-gray);
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background-color: var(--text-muted);
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }

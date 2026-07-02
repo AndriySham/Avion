@@ -66,7 +66,7 @@ export function Cart() {
                     <div className="cart__total-value">&#163; {formattedSubTotal}</div>
                 </div>
                 <p className="cart__info">Taxes and shipping are calculated at checkout</p>
-                <button className="cart__button">Go to checkout</button>
+                <button className="btn btn-dark-blue cart__button">Go to checkout</button>
             </div>
         </div>
     )

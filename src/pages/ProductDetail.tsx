@@ -114,8 +114,8 @@ export function ProductDetail() {
                             />
                         </div>
                         <div className="product-detail__button-wrapper">
-                            <button className="product-detail__button-save">Save to favorites</button>
-                            <button className="product-detail__button-add" onClick={() => addToCart(product, productQuantity)}>Add to cart</button>
+                            <button className="btn btn-white">Save to favorites</button>
+                            <button className="btn btn-dark-blue" onClick={() => addToCart(product, productQuantity)}>Add to cart</button>
                         </div>
                     </div>
                 </div>

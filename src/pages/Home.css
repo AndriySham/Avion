@@ -20,36 +20,9 @@
     line-height: 1.5;
 }
 
-.btn {
-    height: 56px;
-    font-size: 16px;
-    background-color: var(--light-gray);
-    color: var(--dark-primary);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-}
-
 .hero__btn {
     margin-top: 32px;
     width: 100%;
-}
-
-@media (hover: hover) {
-    .btn:hover {
-        background-color: var(--text-muted);
-        transform: scale(1.02);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-}
-
-.btn:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.btn--blue {
-    background-color: var(--btn-blue);
-    color: var(--white);
 }
 
 .hero__image {

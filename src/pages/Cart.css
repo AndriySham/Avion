@@ -132,27 +132,6 @@
 }
 
 .cart__button {
-    display: block;
-    width: 100%;
     margin-top: 36px;
-    font-size: 16px;
-    line-height: 1.5;
-    padding: 16px 0;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: var(--text-dark);
-    color: var(--white);
-}
-
-@media (hover: hover) {
-    .cart__button:hover {
-        background-color: var(--text-muted);
-        transform: scale(1.02);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-}
-
-.cart__button:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    width: 100%;
 }

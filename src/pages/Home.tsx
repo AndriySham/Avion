@@ -49,7 +49,7 @@ export function Home() {
                         <div className="hero__column">
                             <h1 className="hero__title">The furniture brand for the future, with timeless designs</h1>
                             <div className="hero__text">A new era in eco friendly furniture with Avion, the French luxury retail brand with nice fonts, tasteful colors and a beautiful way to display things digitally using modern new technologies.</div>
-                            <button className="btn btn--blue hero__btn">View collection</button>
+                            <button className="btn btn-light-blue hero__btn">View collection</button>
                         </div>
                         <div className="hero__image">
                             <img src="#" alt="furniture" />
