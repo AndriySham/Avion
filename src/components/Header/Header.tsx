@@ -25,10 +25,12 @@ export function Header() {
                         </button>
 
                         <button className="header__action header__action--cart">
-                            <ShoppingCart size={18} />
-                            {productQuantity > 0 && (
-                                <span className="header__action-cart-count">{productQuantity}</span>
-                            )}
+                            <Link to={`/cart`}>
+                                <ShoppingCart size={18} />
+                                {productQuantity > 0 && (
+                                    <span className="header__action-cart-count">{productQuantity}</span>
+                                )}
+                            </Link>
                         </button>
 
                         <button className="header__action">
