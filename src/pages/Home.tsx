@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 
-import { Van, Check, CreditCard, Sprout } from "lucide-react";
-
 import { getProductsByCategory } from "../services/api";
 import { useProducts } from "../context/ProductContext";
+import { Advantages } from "../components/Advantages/Advantages";
 import { ProductCard } from "../components/ProductCard/ProductCard";
 
 import type { Product } from "../types";
@@ -11,6 +10,7 @@ import type { Product } from "../types";
 import storyImage from "../assets/storyImage.png";
 
 import "./Home.css";
+import { Benefits } from "../components/Benefits/Benefits";
 
 export function Home() {
     const {
@@ -58,44 +58,7 @@ export function Home() {
                 </div>
             </section>
 
-            <section className="advantages">
-                <div className="container">
-                    <h2 className="advantages__title">What makes our brand different</h2>
-                    <div className="advantages__grid">
-                        <div className="advantages__item">
-                            <div className="advantages__icon">
-                                <Van size={18} />
-                            </div>
-                            <h3 className="advantages__item-title">Next day as standard</h3>
-                            <p className="advantages__item-text">Order before 3pm and get your order the next day as standard</p>
-                        </div>
-
-                        <div className="advantages__item">
-                            <div className="advantages__icon">
-                                <Check size={18} />
-                            </div>
-                            <h3 className="advantages__item-title">Made by true artisans</h3>
-                            <p className="advantages__item-text">Handmade crafted goods made with real passion and craftmanship</p>
-                        </div>
-
-                        <div className="advantages__item">
-                            <div className="advantages__icon">
-                                <CreditCard size={18} />
-                            </div>
-                            <h3 className="advantages__item-title">Unbeatable prices</h3>
-                            <p className="advantages__item-text">For our materials and quality you won’t find better prices anywhere</p>
-                        </div>
-
-                        <div className="advantages__item">
-                            <div className="advantages__icon">
-                                <Sprout size={18} />
-                            </div>
-                            <h3 className="advantages__item-title">Recycled packaging</h3>
-                            <p className="advantages__item-text">We use 100% recycled packaging to ensure our footprint is manageable</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Advantages />
 
             <section className="home-decoration">
                 <div className="container">
@@ -141,17 +104,7 @@ export function Home() {
                 </div>
             </section>
 
-            <section className="benefits">
-                <div className="container">
-                    <h2 className="benefits__title">Join the club and get the benefits</h2>
-                    <p className="benefits__text">Sign up for our newsletter and receive exclusive offers on new ranges, sales, pop up stores and more</p>
-
-                    <div className="newsletter-form newsletter-form--light">
-                        <input type="email" placeholder="your@email.com" className="newsletter-form__input" />
-                        <button className=" btn newsletter-form__button">Sign up</button>
-                    </div>
-                </div>
-            </section>
+            <Benefits />
 
             <section className="global-brand">
                 <div className="global-brand__row">

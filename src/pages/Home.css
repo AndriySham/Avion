@@ -31,38 +31,6 @@
 
 
 
-/*advantages section*/
-
-.advantages {
-    padding: 48px 0 45px;
-}
-
-.advantages__title {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-.advantages__grid {
-    margin-top: 36px;
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 36px;
-}
-
-.advantages__item-title {
-    margin-top: 16px;
-    font-size: 16px;
-    line-height: 1.4;
-}
-
-.advantages__item-text {
-    margin-top: 12px;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-
-
 /*home-decoration section*/
 
 .home-decoration {
@@ -131,25 +99,6 @@
     width: 100%;
 }
 
-
-
-/* benefits section */
-
-.benefits {
-    padding: 48px 0 38px;
-    background-color: var(--light-gray);
-}
-
-.benefits__title {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-.benefits__text {
-    margin: 16px 0 64px;
-    font-size: 14px;
-    line-height: 1.5;
-}
 
 
 

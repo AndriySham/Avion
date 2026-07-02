@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { getProductById } from "../services/api";
-import type { Product } from "../types";
 import { useCart } from "../context/CartContext";
+import { Advantages } from "../components/Advantages/Advantages";
+
+import type { Product } from "../types";
 
 import "./ProductDetail.css";
+import { Benefits } from "../components/Benefits/Benefits";
 
 export function ProductDetail() {
     const { id } = useParams<{ id: string }>();
@@ -66,60 +69,66 @@ export function ProductDetail() {
     }
 
     return (
-        <div className="product-detail">
-            <div className="container">
-                <div className="product-detail__content">
-                    <div className="product-detail__image">
-                        <img src={product.thumbnail} alt={product.title} />
-                    </div>
-                    <div className="product-detail__info">
-                        <h2 className="product-detail__title">{product.title}</h2>
-                        <p className="product-detail__price">&#163; {product.price}</p>
-                        <h3 className="product-detail__subtitle line">Product description</h3>
-                        <p className="product-detail__description">{product.description}</p>
-                        <h3 className="product-detail__subtitle line">Dimensions</h3>
-                        <div className="product-detail__dimensions">
-                            <div className="product-detail__dimentions-item">
-                                <span className="product-detail__dimentions-item__label">height</span>
-                                <span className="product-detail__dimentions-item__value">{product.dimensions?.height}</span>
-                            </div>
-                            <div className="product-detail__dimentions-item">
-                                <span className="product-detail__dimentions-item__label">width</span>
-                                <span className="product-detail__dimentions-item__value">{product.dimensions?.width}</span>
-                            </div>
-                            <div className="product-detail__dimentions-item">
-                                <span className="product-detail__dimentions-item__label">depth</span>
-                                <span className="product-detail__dimentions-item__value">{product.dimensions?.depth}</span>
-                            </div>
+        <>
+            <div className="product-detail">
+                <div className="container">
+                    <div className="product-detail__content">
+                        <div className="product-detail__image">
+                            <img src={product.thumbnail} alt={product.title} />
                         </div>
-                        <p className="product-detail__quantity">Quantity</p>
-                        <div className="product-detail__counter">
-                            <input
-                                className="product-detail__quantity__minus"
-                                type="button"
-                                value="-"
-                                onClick={quantityDecrement}
-                            />
-                            <input
-                                className="product-detail__quantity__input"
-                                type="number"
-                                value={productQuantity}
-                                onChange={quantityChange}
-                            />
-                            <input
-                                className="product-detail__quantity__plus"
-                                type="button"
-                                value="+"
-                                onClick={quantityIncrement}
-                            />
-                        </div>
-                        <div className="product-detail__button-wrapper">
-                            <button className="btn btn-white">Save to favorites</button>
-                            <button className="btn btn-dark-blue" onClick={() => addToCart(product, productQuantity)}>Add to cart</button>
+                        <div className="product-detail__info">
+                            <h2 className="product-detail__title">{product.title}</h2>
+                            <p className="product-detail__price">&#163; {product.price}</p>
+                            <h3 className="product-detail__subtitle">Product description</h3>
+                            <p className="product-detail__description">{product.description}</p>
+                            <h3 className="product-detail__subtitle">Dimensions</h3>
+                            <div className="product-detail__dimensions">
+                                <div className="product-detail__dimensions-item">
+                                    <span className="product-detail__dimensions-item__label">height</span>
+                                    <span className="product-detail__dimensions-item__value">{product.dimensions?.height}</span>
+                                </div>
+                                <div className="product-detail__dimensions-item">
+                                    <span className="product-detail__dimensions-item__label">width</span>
+                                    <span className="product-detail__dimenssons-item__value">{product.dimensions?.width}</span>
+                                </div>
+                                <div className="product-detail__dimensions-item">
+                                    <span className="product-detail__dimensions-item__label">depth</span>
+                                    <span className="product-detail__dimensions-item__value">{product.dimensions?.depth}</span>
+                                </div>
+                            </div>
+                            <p className="product-detail__quantity">Quantity</p>
+                            <div className="product-detail__counter">
+                                <input
+                                    className="product-detail__quantity__minus"
+                                    type="button"
+                                    value="-"
+                                    onClick={quantityDecrement}
+                                />
+                                <input
+                                    className="product-detail__quantity__input"
+                                    type="number"
+                                    value={productQuantity}
+                                    onChange={quantityChange}
+                                />
+                                <input
+                                    className="product-detail__quantity__plus"
+                                    type="button"
+                                    value="+"
+                                    onClick={quantityIncrement}
+                                />
+                            </div>
+                            <div className="product-detail__button-wrapper">
+                                <button className="btn btn-white">Save to favorites</button>
+                                <button className="btn btn-dark-blue" onClick={() => addToCart(product, productQuantity)}>Add to cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <Advantages />
+
+            <Benefits />
+        </>
     )
 }
