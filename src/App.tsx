@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { Header } from "./components/Header/Header";
-import { Home } from "./pages/Home";
-import { ProductGrid } from "./components/ProductGrid/ProductGrid";
-import { ProductDetail } from "./pages/ProductDetail";
+import { About } from "./pages/About";
 import { Cart } from "./pages/Cart";
+import { Home } from "./pages/Home";
+import { ProductDetail } from "./pages/ProductDetail";
+
 import { Footer } from "./components/Footer/Footer";
+import { Header } from "./components/Header/Header";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <main style={{ flex: 1 }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
