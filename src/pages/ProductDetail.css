@@ -160,3 +160,27 @@
     flex-direction: column;
     gap: 14px;
 }
+
+
+
+/*related-products section*/
+
+.related-products {
+    padding: 48px 0 38px;
+}
+
+.related-products__title {
+    font-size: 20px;
+}
+
+.related-products__grid {
+    margin-top: 19px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 20px;
+}
+
+.related-products__btn {
+    margin-top: 29px;
+    width: 100%;
+}

@@ -2,17 +2,22 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { getProductById } from "../services/api";
+
 import { useCart } from "../context/CartContext";
+import { useProducts } from "../context/ProductContext";
+
 import { Advantages } from "../components/Advantages/Advantages";
+import { Benefits } from "../components/Benefits/Benefits";
+import { ProductCard } from "../components/ProductCard/ProductCard";
 
 import type { Product } from "../types";
 
 import "./ProductDetail.css";
-import { Benefits } from "../components/Benefits/Benefits";
 
 export function ProductDetail() {
     const { id } = useParams<{ id: string }>();
     const { addToCart } = useCart();
+    const { products } = useProducts();
 
     const [product, setProduct] = useState<Product | null>(null);
     const [productQuantity, setProductQuantity] = useState<number>(1);
@@ -125,6 +130,20 @@ export function ProductDetail() {
                     </div>
                 </div>
             </div>
+
+            <section className="related-products">
+                <div className="container">
+                    <h2 className="related-products__title">You might also like</h2>
+
+                    <div className="related-products__grid">
+                        {products?.slice(0, 4).map((item) => (
+                            <ProductCard key={item.id} product={item} />
+                        ))}
+                    </div>
+
+                    <button className="btn btn-white related-products__btn">View collection</button>
+                </div>
+            </section>
 
             <Advantages />
 
