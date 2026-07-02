@@ -53,3 +53,46 @@
 .about-hero__btn {
     width: 100%;
 }
+
+
+
+/*idea section */
+
+.idea {
+    padding-top: 38px;
+}
+
+.idea__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.idea__info {
+    padding: 36px 32px 30px;
+    background-color: var(--dark-primary);
+    color: var(--white);
+}
+
+.idea__title {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.idea__text {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.idea__btn {
+    margin-top: 56px;
+    width: 100%;
+}
+
+.idea__image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
