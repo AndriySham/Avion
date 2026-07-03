@@ -89,6 +89,13 @@ ol {
   list-style: none;
 }
 
+select,
+input,
+textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
 .container {
   margin: 0 24px;
 }

@@ -1,0 +1,38 @@
+.banner {
+    background-image: url("../assets/Categories_banner.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    aspect-ratio: 39 / 14.6;
+
+}
+
+.categories__selection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    padding: 20px 0;
+}
+
+.categories__filters select,
+.categories__sorting select {
+    width: 100%;
+    max-width: 160px;
+    height: 56px;
+    text-align: center;
+    background-color: var(--light-gray);
+    border: 1px solid var(--border-gray);
+    font-size: 16px;
+}
+
+.categories__products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 20px;
+}
+
+.categories__btn {
+    margin: 40px 0 28px;
+    width: 100%;
+}

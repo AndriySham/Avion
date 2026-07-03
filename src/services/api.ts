@@ -3,8 +3,25 @@ import type { Product, User } from "../types";
 const BASE_URL = 'https://dummyjson.com';
 
 export async function getProducts(): Promise<Product[] | null> {
+    const furniturePromise = getProductsByCategory('furniture');
+    const homeDecorationPromise = getProductsByCategory('home-decoration');
+    const kitchenPromise = getProductsByCategory('kitchen-accessories');
 
-    return getProductsByCategory('furniture');
+    const [furnitureList, homeDecoList, kitchenList] =
+        await Promise.all([furniturePromise, homeDecorationPromise, kitchenPromise]);
+
+    const merged: Product[] = [];
+    if (furnitureList) {
+        merged.push(...furnitureList);
+    }
+    if (homeDecoList) {
+        merged.push(...homeDecoList);
+    }
+    if (kitchenList) {
+        merged.push(...kitchenList);
+    }
+
+    return merged.length > 0 ? merged : null;
 }
 
 export async function getProductsByCategory(category: string): Promise<Product[] | null> {
