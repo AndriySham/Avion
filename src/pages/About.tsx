@@ -2,6 +2,7 @@ import { Advantages } from "../components/Advantages/Advantages";
 import { Benefits } from "../components/Benefits/Benefits";
 
 import Armchair from "../assets/About_yellow_armchair.png";
+import Chair from "../assets/About_cocoa_sofa.png";
 
 import "./About.css";
 
@@ -44,6 +45,24 @@ export function About() {
                         </div>
                         <div className="idea__image">
                             <img src={Armchair} alt="yellow armchair" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="service">
+                <div className="container">
+                    <div className="service__content">
+                        <div className="service__image">
+                            <img src={Chair} alt="chair" />
+                        </div>
+                        <div className="service__info">
+                            <h2 className="service__title">Our service isn’t just personal, it’s actually hyper personally exquisite</h2>
+                            <div className="service__text">
+                                <p className="service__text-item">When we started Avion, the idea was simple. Make high quality furniture affordable and available for the mass market.</p>
+                                <p className="service__text-item">Handmade, and lovingly crafted furniture and homeware is what we live, breathe and design so our Chelsea boutique become the hotbed for the London interior design community.</p>
+                            </div>
+                            <button className="btn btn-white service__btn">Get in touch</button>
                         </div>
                     </div>
                 </div>
