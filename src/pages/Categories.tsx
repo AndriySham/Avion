@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 import { getProductsByCategory } from "../services/api";
 
@@ -20,35 +20,42 @@ export function Categories() {
     const [sortedCategory, setSortedCategory] = useState<SortedCategory>("");
     const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
     const [visibleCount, setVisibleCount] = useState<number>(12);
-    // const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
     const [isFilterLoading, setIsFilterLoading] = useState<boolean>(false);
     const [filterError, setFilterError] = useState<string | null>(null);
 
     useEffect(() => {
+        let active = true;
+
         const fetchNewCategory = async () => {
             setIsFilterLoading(true);
             setFilterError(null);
 
             try {
                 if (selectedCategory === "") {
-                    setCategoryProducts(initialProducts || []);
+                    if (active) setCategoryProducts(initialProducts || []);
                 } else {
                     const data = await getProductsByCategory(selectedCategory);
-                    if (data === null) {
-                        setFilterError("Failed to load category products");
-                    } else {
-                        setCategoryProducts(data);
+                    if (active) {
+                        if (data === null) {
+                            setFilterError("Failed to load category products");
+                        } else {
+                            setCategoryProducts(data);
+                        }
                     }
                 }
             } catch (err) {
-                setFilterError("Error fetching data");
+                if (active) setFilterError("Error fetching data");
             } finally {
-                setIsFilterLoading(false);
+                if (active) setIsFilterLoading(false);
             }
         };
 
         fetchNewCategory();
+
+        return () => {
+            active = false;
+        };
     }, [selectedCategory, initialProducts]);
 
     const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -60,8 +67,17 @@ export function Categories() {
         setSortedCategory(event.target.value as SortedCategory);
     }
 
+    const sortedList = useMemo(() => {
+        let list = [...categoryProducts];
+        if (sortedCategory === "from-cheapest-to-most-expensive") {
+            list.sort((a, b) => a.price - b.price);
+        } else if (sortedCategory === "from-most-expensive-to-cheapest") {
+            list.sort((a, b) => b.price - a.price);
+        }
+        return list;
+    }, [categoryProducts, sortedCategory]);
 
-    const processedProducts = categoryProducts ? categoryProducts.slice(0, visibleCount) : [];
+    const processedProducts = sortedList.slice(0, visibleCount);
 
     const showLoading = isInitialLoading || isFilterLoading;
     const showError = initialError || filterError;
@@ -83,8 +99,9 @@ export function Categories() {
                     <div className="categories__sorting">
                         <select id="categories-sorting" value={sortedCategory} onChange={handleSort}>
                             <option value="" disabled>Sorting</option>
-                            <option value="from-cheapest-to-most-expensive">Price: Low to High</option>
-                            <option value="from-most-expensive-to-cheapest">Price: High to Low</option>
+                            <option value="from-cheapest-to-most-expensive" >Price: Low to High</option>
+                            <option value="from-most-expensive-to-cheapest" >Price: High to Low</option>
+                            <option value="">None</option>
                         </select>
                     </div>
                 </div>
@@ -92,7 +109,7 @@ export function Categories() {
                 {showLoading ? (
                     <div>Loading...</div>
                 ) : showError ? (
-                    <div className="error">Error: {initialError}</div>
+                    <div className="error">Error: {showError}</div>
                 ) : (
                     <div className="categories__products-grid">
                         {processedProducts.map((item) => (
