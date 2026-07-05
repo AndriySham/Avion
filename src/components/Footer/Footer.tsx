@@ -51,7 +51,7 @@ export function Footer() {
                 </div>
 
                 <div className="footer__social">
-                    <p className="footer__copyright">Copyright 2022 Avion LTD</p>
+                    <p className="footer__copyright">Copyright 2026 Avion LTD</p>
                     <ul className="footer__links">
 
                     </ul>

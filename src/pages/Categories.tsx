@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { getProductsByCategory } from "../services/api";
 
 import { useProducts } from "../context/ProductContext";
 
 import { ProductCard } from "../components/ProductCard/ProductCard";
+
+import type { Product } from "../types";
 
 import "./Categories.css";
 
@@ -10,20 +14,57 @@ type Category = "furniture" | "home-decoration" | "kitchen-accessories" | "";
 type SortedCategory = "from-cheapest-to-most-expensive" | "from-most-expensive-to-cheapest" | "";
 
 export function Categories() {
-    const { products, isLoading, error } = useProducts();
+    const { products: initialProducts, isLoading: isInitialLoading, error: initialError } = useProducts();
 
     const [selectedCategory, setSelectedCategory] = useState<Category>("");
     const [sortedCategory, setSortedCategory] = useState<SortedCategory>("");
-    // const [sortBy, setSortBy] = useState<Product | >([]);
+    const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
+    const [visibleCount, setVisibleCount] = useState<number>(12);
+    // const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
+    const [isFilterLoading, setIsFilterLoading] = useState<boolean>(false);
+    const [filterError, setFilterError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchNewCategory = async () => {
+            setIsFilterLoading(true);
+            setFilterError(null);
+
+            try {
+                if (selectedCategory === "") {
+                    setCategoryProducts(initialProducts || []);
+                } else {
+                    const data = await getProductsByCategory(selectedCategory);
+                    if (data === null) {
+                        setFilterError("Failed to load category products");
+                    } else {
+                        setCategoryProducts(data);
+                    }
+                }
+            } catch (err) {
+                setFilterError("Error fetching data");
+            } finally {
+                setIsFilterLoading(false);
+            }
+        };
+
+        fetchNewCategory();
+    }, [selectedCategory, initialProducts]);
 
     const handleSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedCategory(event.target.value as Category)
+        setSelectedCategory(event.target.value as Category);
+        setVisibleCount(12);
     }
 
     const handleSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSortedCategory(event.target.value as SortedCategory);
     }
+
+
+    const processedProducts = categoryProducts ? categoryProducts.slice(0, visibleCount) : [];
+
+    const showLoading = isInitialLoading || isFilterLoading;
+    const showError = initialError || filterError;
 
     return (
         <section className="categories">
@@ -36,6 +77,7 @@ export function Categories() {
                             <option value="furniture">Furniture</option>
                             <option value="home-decoration">Home decoration</option>
                             <option value="kitchen-accessories">Kitchen-accessories</option>
+                            <option value="">All categories</option>
                         </select>
                     </div>
                     <div className="categories__sorting">
@@ -47,22 +89,27 @@ export function Categories() {
                     </div>
                 </div>
 
-                {/* <div className="categories__products-grid"> */}
-
-                {isLoading ? (
+                {showLoading ? (
                     <div>Loading...</div>
-                ) : error ? (
-                    <div className="error">Error: {error}</div>
+                ) : showError ? (
+                    <div className="error">Error: {initialError}</div>
                 ) : (
                     <div className="categories__products-grid">
-                        {products.map((item) => (
+                        {processedProducts.map((item) => (
                             <ProductCard key={item.id} product={item} />
                         ))}
                     </div>
                 )}
-                {/* </div> */}
 
-                <button className="btn categories__btn">View collection</button>
+                {categoryProducts.length > visibleCount && (
+
+                    <button
+                        className="btn categories__btn"
+                        onClick={() => setVisibleCount(prev => prev + 12)}
+                    >
+                        View collection
+                    </button>
+                )}
             </div>
         </section>
     )
