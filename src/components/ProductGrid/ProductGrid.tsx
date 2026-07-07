@@ -1,12 +1,19 @@
+import { useProducts } from "../../context/ProductContext";
+
 import { ProductCard } from "../ProductCard/ProductCard";
 
-import { useProducts } from "../../context/ProductContext";
+import type { Product } from "../../types";
 
 import './ProductGrid.css';
 
+interface ProductGridProps {
+    products?: Product[];
+}
 
-export function ProductGrid() {
-    const { products, isLoading, error } = useProducts();
+export function ProductGrid({ products }: ProductGridProps) {
+    const { products: contextProducts, isLoading, error } = useProducts();
+
+    const displayProducts = products || contextProducts;
 
     if (isLoading) {
         return (
@@ -28,7 +35,7 @@ export function ProductGrid() {
         )
     }
 
-    if (!products || products.length === 0) {
+    if (!displayProducts || displayProducts.length === 0) {
         return (
             <section className="products">
                 <div className="container">
@@ -42,7 +49,7 @@ export function ProductGrid() {
         <section className="products">
             <div className="container">
                 <div className="products__list">
-                    {products.map((product) => (
+                    {displayProducts.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
                 </div>

@@ -1,13 +1,20 @@
+import { useState } from "react";
+
 import { Link } from "react-router-dom";
 
 import { Search, ShoppingCart, CircleUser, Menu } from "lucide-react";
 
 import { useCart } from "../../context/CartContext";
 
+import { Searchbar } from "../Searchbar/Searchbar";
+
 import "./Header.css";
 
 export function Header() {
     const { cartItems } = useCart();
+
+    const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+
     const productQuantity = cartItems.reduce(
         (sum, item) => sum + item.quantity, 0
     );
@@ -20,7 +27,7 @@ export function Header() {
                         <span>Avion</span>
                     </Link>
                     <div className="header__actions">
-                        <button className="header__action">
+                        <button className="header__action" onClick={() => setIsSearchOpen(true)}>
                             <Search size={18} />
                         </button>
 
@@ -43,6 +50,9 @@ export function Header() {
                     </div>
                 </div>
             </div>
+
+            <Searchbar isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+
         </header>
     )
 }
