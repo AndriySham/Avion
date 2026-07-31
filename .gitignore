@@ -3,6 +3,7 @@ logs
 *.log
 npm-debug.log*
 yarn-debug.log*
+yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
@@ -34,5 +35,9 @@ dist-ssr/
 # Design Screenshots (Do NOT commit to GitHub)
 figma_screenshots/
 
+# AI Agent Framework & Playbook (Do NOT commit to GitHub)
 AI_Developer_Playbook/
 AGENTS.md
+MEMORY.md
+.agents/
+mcp-servers/

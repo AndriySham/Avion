@@ -2,10 +2,11 @@ import { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import { Search, ShoppingCart, CircleUser, Menu } from "lucide-react";
+import { Search, ShoppingCart, Heart, CircleUser, Menu } from "lucide-react";
 
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
+import { useWishlist } from "../../context/WishlistContext";
 
 import { Searchbar } from "../Searchbar/Searchbar";
 
@@ -13,6 +14,7 @@ import "./Header.css";
 
 export function Header() {
     const { cartItems } = useCart();
+    const { wishlistItems } = useWishlist();
     const { user, logout } = useAuth();
     const navigate = useNavigate();
 
@@ -21,6 +23,7 @@ export function Header() {
     const productQuantity = cartItems.reduce(
         (sum, item) => sum + item.quantity, 0
     );
+    const wishlistQuantity = wishlistItems.length;
 
     const handleUserClick = () => {
         if (user) {
@@ -42,8 +45,17 @@ export function Header() {
                             <Search size={18} />
                         </button>
 
+                        <button className="header__action header__action--wishlist">
+                            <Link to={`/wishlist`} aria-label="Wishlist">
+                                <Heart size={18} />
+                                {wishlistQuantity > 0 && (
+                                    <span className="header__action-cart-count">{wishlistQuantity}</span>
+                                )}
+                            </Link>
+                        </button>
+
                         <button className="header__action header__action--cart">
-                            <Link to={`/cart`}>
+                            <Link to={`/cart`} aria-label="Cart">
                                 <ShoppingCart size={18} />
                                 {productQuantity > 0 && (
                                     <span className="header__action-cart-count">{productQuantity}</span>

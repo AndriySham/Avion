@@ -40,7 +40,8 @@
     color: var(--text-muted);
 }
 
-.header__action--cart {
+.header__action--cart,
+.header__action--wishlist {
     position: relative;
 }
 

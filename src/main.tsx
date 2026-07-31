@@ -5,6 +5,7 @@ import App from './App.tsx'
 import { AuthProvider } from './context/AuthContext.tsx'
 import { CartProvider } from './context/CartContext.tsx'
 import { ProductsProvider } from './context/ProductContext.tsx'
+import { WishlistProvider } from './context/WishlistContext.tsx'
 
 import './index.css'
 
@@ -13,7 +14,9 @@ createRoot(document.getElementById('root')!).render(
     <AuthProvider>
       <ProductsProvider>
         <CartProvider>
-          <App />
+          <WishlistProvider>
+            <App />
+          </WishlistProvider>
         </CartProvider>
       </ProductsProvider>
     </AuthProvider>
