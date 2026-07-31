@@ -26,7 +26,7 @@ export async function getProducts(): Promise<Product[] | null> {
 
 export async function getProductsByCategory(category: string): Promise<Product[] | null> {
     try {
-        const response = await fetch(`${BASE_URL}/products/category/${category}`);
+        const response = await fetch(`${BASE_URL}/products/category/${encodeURIComponent(category.trim())}`);
 
         if (!response.ok) {
             throw new Error('Error of products loading');
@@ -84,7 +84,7 @@ export async function login(username: string, password: string): Promise<User | 
         return data;
 
     } catch (error) {
-        console.error('login Error:', error);
+        console.error('Authentication request failed');
 
         return null;
     }

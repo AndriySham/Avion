@@ -5,6 +5,7 @@ import { getProductById } from "../services/api";
 
 import { useCart } from "../context/CartContext";
 import { useProducts } from "../context/ProductContext";
+import { useWishlist } from "../context/WishlistContext";
 
 import { Advantages } from "../components/Advantages/Advantages";
 import { Benefits } from "../components/Benefits/Benefits";
@@ -18,6 +19,7 @@ export function ProductDetail() {
     const { id } = useParams<{ id: string }>();
     const { addToCart } = useCart();
     const { products } = useProducts();
+    const { toggleWishlist, isInWishlist } = useWishlist();
 
     const [product, setProduct] = useState<Product | null>(null);
     const [productQuantity, setProductQuantity] = useState<number>(1);
@@ -123,7 +125,12 @@ export function ProductDetail() {
                                 />
                             </div>
                             <div className="product-detail__button-wrapper">
-                                <button className="btn btn-white">Save to favorites</button>
+                                <button 
+                                    className="btn btn-white"
+                                    onClick={() => toggleWishlist(product)}
+                                >
+                                    {isInWishlist(product.id) ? "Remove from favorites" : "Save to favorites"}
+                                </button>
                                 <button className="btn btn-dark-blue" onClick={() => addToCart(product, productQuantity)}>Add to cart</button>
                             </div>
                         </div>

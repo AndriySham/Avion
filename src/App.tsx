@@ -6,6 +6,7 @@ import { Categories } from "./pages/Categories";
 import { Home } from "./pages/Home";
 import { ProductDetail } from "./pages/ProductDetail";
 import { Login } from "./pages/Login";
+import { Wishlist } from "./pages/Wishlist";
 
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
@@ -22,6 +23,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/login" element={<Login />} />
           </Routes>
